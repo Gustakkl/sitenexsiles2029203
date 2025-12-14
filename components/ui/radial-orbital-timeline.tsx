@@ -169,7 +169,7 @@ export default function RadialOrbitalTimeline({
           }}
         >
           {/* Central Hub */}
-          <div className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-primary via-blue-600 to-indigo-600 animate-pulse flex items-center justify-center z-10 shadow-[0_0_50px_rgba(19,91,236,0.5)] cursor-pointer" onClick={() => setAutoRotate(!autoRotate)}>
+          <div className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-primary via-violet-600 to-fuchsia-600 animate-pulse flex items-center justify-center z-10 shadow-[0_0_50px_rgba(139,92,246,0.5)] cursor-pointer" onClick={() => setAutoRotate(!autoRotate)}>
             <div className="absolute w-24 h-24 rounded-full border border-primary/40 animate-ping opacity-70"></div>
             <div
               className="absolute w-32 h-32 rounded-full border border-primary/20 animate-ping opacity-50"
@@ -213,7 +213,7 @@ export default function RadialOrbitalTimeline({
                     isPulsing ? "animate-pulse duration-1000" : ""
                   }`}
                   style={{
-                    background: `radial-gradient(circle, rgba(19,91,236,0.3) 0%, rgba(19,91,236,0) 70%)`,
+                    background: `radial-gradient(circle, rgba(139,92,246,0.3) 0%, rgba(139,92,246,0) 70%)`,
                     width: `${item.energy * 0.5 + 40}px`,
                     height: `${item.energy * 0.5 + 40}px`,
                     left: `-${(item.energy * 0.5 + 40 - 40) / 2}px`,

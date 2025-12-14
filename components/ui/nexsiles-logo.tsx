@@ -17,6 +17,7 @@ export const NexsilesLogo = ({ className, size = 32 }: NexsilesLogoProps) => {
         alt="Nexsiles Logo"
         className="w-full h-full object-contain"
         draggable={false}
+        style={{ filter: 'hue-rotate(45deg)' }}
       />
     </div>
   );

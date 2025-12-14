@@ -48,7 +48,7 @@ const PricingSwitch = ({
         {selected === "0" && (
           <motion.span
             layoutId={switchLayoutId}
-            className="absolute top-0 left-0 sm:h-12 h-10 w-full rounded-full border border-primary/50 shadow-[0_0_15px_rgba(19,91,236,0.3)] bg-primary"
+            className="absolute top-0 left-0 sm:h-12 h-10 w-full rounded-full border border-primary/50 shadow-[0_0_15px_rgba(139,92,246,0.3)] bg-primary"
             transition={{ type: "spring", stiffness: 500, damping: 30 }}
           />
         )}
@@ -67,7 +67,7 @@ const PricingSwitch = ({
         {selected === "1" && (
           <motion.span
             layoutId={switchLayoutId}
-            className="absolute top-0 left-0 sm:h-12 h-10 w-full rounded-full border border-primary/50 shadow-[0_0_15px_rgba(19,91,236,0.3)] bg-primary"
+            className="absolute top-0 left-0 sm:h-12 h-10 w-full rounded-full border border-primary/50 shadow-[0_0_15px_rgba(139,92,246,0.3)] bg-primary"
             transition={{ type: "spring", stiffness: 500, damping: 30 }}
           />
         )}
@@ -165,14 +165,17 @@ export default function PricingSection() {
   const currentFeatures = isNexbox ? featuresBox : featuresERP;
 
   return (
-    <div className="px-4 py-20 w-full mx-auto relative bg-[#101622] border-t border-[#282e39]" ref={pricingRef}>
+    <div className="px-4 py-20 w-full mx-auto relative bg-[#101622]" ref={pricingRef}>
+      {/* Top Gradient Divider */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+      
       <div className="py-16 px-4 relative overflow-hidden">
          {/* Background Glow */}
         <div
           className="absolute inset-0 z-0 opacity-20 pointer-events-none"
           style={{
             background:
-              "radial-gradient(circle at 50% 50%, #135bec 0%, transparent 70%)",
+              "radial-gradient(circle at 50% 50%, #8b5cf6 0%, transparent 70%)",
           }}
         />
         
@@ -224,7 +227,7 @@ export default function PricingSection() {
       {/* Product Features */}
       <div className="px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <ElectricCard color="#135bec" variant="swirl">
+          <ElectricCard color="#8b5cf6" variant="swirl">
             <div className="p-8 md:p-12">
               <div className="grid md:grid-cols-2 md:gap-16 gap-12 items-start">
                 
@@ -309,7 +312,8 @@ export default function PricingSection() {
                     />
                   </TimelineContent>
 
-                  <div className="h-px bg-[#282e39] w-full"></div>
+                  {/* Divider Gradient */}
+                  <div className="h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent w-full"></div>
 
                   <TimelineContent
                     as="div"
@@ -339,7 +343,7 @@ export default function PricingSection() {
                       animationNum={6}
                       timelineRef={pricingRef}
                       customVariants={revealVariants}
-                      className="w-full h-14 rounded-lg bg-primary hover:bg-primary-hover text-white font-bold text-lg shadow-[0_0_25px_rgba(19,91,236,0.4)] hover:shadow-[0_0_35px_rgba(19,91,236,0.6)] hover:-translate-y-1 transition-all active:scale-[0.98] relative overflow-hidden group"
+                      className="w-full h-14 rounded-lg bg-primary hover:bg-primary-hover text-white font-bold text-lg shadow-[0_0_25px_rgba(139,92,246,0.4)] hover:shadow-[0_0_35px_rgba(139,92,246,0.6)] hover:-translate-y-1 transition-all active:scale-[0.98] relative overflow-hidden group"
                     >
                       <span className="relative z-10">Contratar Agora</span>
                       {/* Shimmer Effect */}

@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { Link } from 'react-router-dom';
 
 const CONSTANTS = {
   itemSize: 50, // Tamanho reduzido dos botões (era 60)
@@ -64,8 +63,8 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, label, href, index, totalItem
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
-      <Link 
-        to={href} 
+      <a 
+        href={href} 
         onClick={onSelect}
         className="relative flex items-center justify-center w-full h-full rounded-full bg-[#1c1f27] border-2 border-[#282e39] text-gray-300 hover:text-white hover:border-primary hover:bg-[#282e39] shadow-2xl transition-colors z-50 group"
       >
@@ -80,7 +79,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, label, href, index, totalItem
         )}>
             {label}
         </div>
-      </Link>
+      </a>
     </motion.div>
   );
 };
@@ -164,7 +163,7 @@ const CircleMenu: React.FC<CircleMenuProps> = ({
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "relative z-50 flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(19,91,236,0.3)]",
+          "relative z-50 flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 shadow-[0_0_15px_rgba(139,92,246,0.3)]",
           isOpen ? "bg-red-500 hover:bg-red-600 rotate-90" : "bg-primary hover:bg-primary-hover hover:scale-105"
         )}
       >

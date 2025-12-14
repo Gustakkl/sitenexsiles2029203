@@ -1,7 +1,7 @@
 import React from 'react';
-import { ArrowRight, Package, RefreshCw, BarChart3 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ArrowRight, Package, RefreshCw, BarChart3, ChevronRight } from 'lucide-react';
 import { ParticleTextEffect } from '../components/ui/particle-text-effect';
+import { BubbleText } from '../components/ui/bubble-text';
 import { motion } from 'framer-motion';
 
 const containerVariants = {
@@ -23,7 +23,10 @@ const Home: React.FC = () => {
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative w-full h-[600px] md:h-[700px] overflow-hidden bg-[#111318] border-b border-[#282e39] flex items-center justify-center">
+      <div className="relative w-full h-[600px] md:h-[700px] overflow-hidden bg-[#111318] flex items-center justify-center">
+        {/* Bottom Gradient Border */}
+        <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+
         {/* Particle Effect Background */}
         <div className="absolute inset-0 z-0 opacity-100">
            <ParticleTextEffect 
@@ -43,13 +46,13 @@ const Home: React.FC = () => {
               transition={{ delay: 0.5, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center pt-32"
             >
-              <Link to="/features" className="group flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-primary text-white text-base font-bold hover:bg-primary/90 transition-all shadow-[0_0_30px_rgba(19,91,236,0.4)] hover:shadow-[0_0_40px_rgba(19,91,236,0.6)] hover:-translate-y-1">
+              <a href="#features" className="group flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-primary text-white text-base font-bold hover:bg-primary/90 transition-all shadow-[0_0_30px_rgba(139,92,246,0.4)] hover:shadow-[0_0_40px_rgba(139,92,246,0.6)] hover:-translate-y-1">
                 <span>Conheça o Nexsiles</span>
                 <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/contact" className="flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-[#282e39]/50 border border-white/10 backdrop-blur-sm text-white text-base font-bold hover:bg-[#282e39] transition-all hover:-translate-y-1">
+              </a>
+              <a href="#contact" className="flex items-center justify-center gap-2 h-12 px-8 rounded-lg bg-[#282e39]/50 border border-white/10 backdrop-blur-sm text-white text-base font-bold hover:bg-[#282e39] transition-all hover:-translate-y-1">
                 <span>Ver o Nexbox</span>
-              </Link>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -98,45 +101,29 @@ const Home: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row justify-between items-end gap-6 border-b border-white/10 pb-6"
+            className="flex flex-col md:flex-row justify-between items-end gap-6 pb-6 relative"
           >
+            {/* Gradient Line replacing border-b */}
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
+
             <div className="max-w-xl">
-              <h2 className="text-primary font-bold text-sm tracking-widest uppercase mb-2">Nossas Soluções</h2>
-              <h3 className="text-white text-3xl md:text-4xl font-bold leading-tight">Ecossistema completo para sua operação</h3>
+              <h2 className="text-primary font-bold text-sm tracking-widest uppercase mb-4">Nossas Soluções</h2>
+              
+              {/* Animated Text Component */}
+              <BubbleText 
+                text="Ecossistema completo para sua operação" 
+                className="text-white leading-tight" 
+              />
+              
             </div>
             <div className="pb-2">
-              <Link to="/features" className="text-white hover:text-primary transition-colors flex items-center gap-1 font-medium">
+              <a href="#features" className="text-white hover:text-primary transition-colors flex items-center gap-1 font-medium">
                 Ver comparativo completo <ArrowRight size={18} />
-              </Link>
+              </a>
             </div>
           </motion.div>
 
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-          >
-            <motion.div variants={itemVariants}>
-              <ProductCard 
-                title="Nexsiles"
-                tag="ERP"
-                tagColor="blue"
-                desc="O sistema definitivo para controle de estoque, financeiro e gestão completa da sua distribuidora. Emissão de NF-e, controle de consignado e relatórios gerenciais robustos."
-                image="https://lh3.googleusercontent.com/aida-public/AB6AXuBVLFp7KU9Bm4x7GpenifUQ521ccDHWi1H5xrz5_cn9F6l7b4MZzBjE8vtsVnkYuS9mk1AuGk7lTxHhrfpVvKNU6Tppu7Y1h9bl1j3xRf24oSFIAnwzK-4gOUv9ZnMqlAdp4NXKXo3mYHcqAPzL6uYMyrY8iKEv2qKcAMqSOcaRJDU3fjfC_mSlQkntaSFGKsW4xify8WCKood2049Q1W_gOmuWdeHqhKw0yKLjApRsbR7uPPdAQapi40WMDFxNWr-n98r1ryylL8UB"
-              />
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <ProductCard 
-                title="Nexbox"
-                tag="POS Mobile"
-                tagColor="purple"
-                desc="Agilidade para suas vendas externas. Leve seu mostruário digital e feche pedidos em qualquer lugar via tablet ou smartphone, com sincronização automática."
-                image="https://lh3.googleusercontent.com/aida-public/AB6AXuD9uh9O2Wa2QhGv1o4X89ns8K-nL0FBEWIx0SRo0fGTJACSGTzzuxBpazRYFyahQcZ7PwCgiUsjth8KDl8oVBFX0jDYowQC5tL8QPFRJQzN2q0a3dIQi2x9SVHr4tbRwRH5gBYfXvHCpkHWLSLHNmKUOmsk-nkLls9le8orc3BbbhYi3NysEM0jQ1G-aYWe76BNXFB3FfMo4JdVoog7Tfu0xF5NUMcN7n8rpgrkm_kMCnrLdSje4so_nbw6-4Qs6sUIqWbDJa_ZEONv"
-              />
-            </motion.div>
-          </motion.div>
+          {/* Cards removed as requested */}
         </div>
       </div>
 
@@ -159,12 +146,12 @@ const Home: React.FC = () => {
               Junte-se a mais de 500 distribuidoras que modernizaram sua gestão com Nexsiles.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
-              <Link to="/contact" className="h-12 px-8 rounded-lg bg-primary text-white font-bold hover:bg-primary/90 shadow-lg shadow-primary/25 transition-all flex items-center justify-center hover:scale-105 active:scale-95">
+              <a href="#contact" className="h-12 px-8 rounded-lg bg-primary text-white font-bold hover:bg-primary/90 shadow-lg shadow-primary/25 transition-all flex items-center justify-center hover:scale-105 active:scale-95">
                 Falar com Consultor
-              </Link>
-              <Link to="/features" className="h-12 px-8 rounded-lg bg-transparent border border-white/20 text-white font-bold hover:bg-white/5 transition-all flex items-center justify-center hover:scale-105 active:scale-95">
+              </a>
+              <a href="#features" className="h-12 px-8 rounded-lg bg-transparent border border-white/20 text-white font-bold hover:bg-white/5 transition-all flex items-center justify-center hover:scale-105 active:scale-95">
                 Ver Planos
-              </Link>
+              </a>
             </div>
           </motion.div>
         </div>
@@ -180,31 +167,6 @@ const FeatureItem = ({ icon, title, desc }: { icon: React.ReactNode, title: stri
     </div>
     <h3 className="text-white text-xl font-bold mb-2 group-hover:text-primary transition-colors">{title}</h3>
     <p className="text-gray-400 leading-relaxed">{desc}</p>
-  </div>
-);
-
-const ProductCard = ({ title, tag, tagColor, desc, image }: { title: string, tag: string, tagColor: 'blue' | 'purple', desc: string, image: string }) => (
-  <div className="group flex flex-col rounded-2xl overflow-hidden bg-[#1c1f27] border border-white/5 shadow-lg hover:shadow-[0_0_30px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-1 h-full">
-    <div className="w-full h-64 bg-cover bg-center relative overflow-hidden" style={{backgroundImage: `url('${image}')`}}>
-      <div className="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-colors duration-500"></div>
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1c1f27] to-transparent opacity-80"></div>
-    </div>
-    <div className="flex flex-col flex-1 p-8 gap-4 relative -mt-12 z-10">
-      <div className="flex items-center justify-between">
-        <h4 className="text-white text-2xl font-bold group-hover:text-primary transition-colors">{title}</h4>
-        <span className={`px-3 py-1 rounded-full text-xs font-bold border ${tagColor === 'blue' ? 'bg-blue-900/30 text-blue-400 border-blue-800/50' : 'bg-purple-900/30 text-purple-400 border-purple-800/50'}`}>
-          {tag}
-        </span>
-      </div>
-      <p className="text-gray-400 text-base leading-relaxed flex-1">
-        {desc}
-      </p>
-      <div className="pt-4 border-t border-white/5">
-        <Link to="/features" className="w-full h-12 rounded-lg bg-[#282e39] hover:bg-primary hover:text-white text-gray-200 font-bold transition-all flex items-center justify-center gap-2 group-hover:shadow-lg group-hover:shadow-primary/20">
-          <span>Explorar Recursos</span>
-        </Link>
-      </div>
-    </div>
   </div>
 );
 

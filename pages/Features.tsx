@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Rocket, TrendingUp, CheckCircle, Briefcase, Store, Repeat, QrCode, Tag, Calculator, BarChart4 } from 'lucide-react';
 import PricingSection from '../components/ui/pricing-section';
 import { TestimonialsColumn } from '../components/ui/testimonials-columns';
 import { motion } from 'framer-motion';
 import { Card3DList, CardData } from '../components/ui/animated-3d-card';
+import { CircularGallery, GalleryItem } from '../components/ui/circular-gallery';
 
 const Features: React.FC = () => {
   const testimonials = [
@@ -99,6 +99,72 @@ const Features: React.FC = () => {
     },
   ];
 
+  const galleryData: GalleryItem[] = [
+    {
+      common: 'Dashboard Geral',
+      binomial: 'Visão 360º da Operação',
+      photo: {
+        url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop',
+        text: 'Dashboard analítico com gráficos',
+        by: 'Analytics'
+      }
+    },
+    {
+      common: 'App Nexbox',
+      binomial: 'Vendas Offline no Tablet',
+      photo: {
+        url: 'https://images.unsplash.com/photo-1555421689-491a97ff2040?w=800&auto=format&fit=crop&q=80',
+        text: 'Interface mobile moderna',
+        by: 'Mobile'
+      }
+    },
+    {
+      common: 'Estoque de Peças',
+      binomial: 'Rastreabilidade Unitária',
+      photo: {
+        url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop',
+        text: 'Controle de inventário detalhado',
+        by: 'Inventory'
+      }
+    },
+    {
+      common: 'Financeiro',
+      binomial: 'Fluxo de Caixa Real',
+      photo: {
+        url: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&auto=format&fit=crop&q=80',
+        text: 'Gráficos financeiros',
+        by: 'Finance'
+      }
+    },
+    {
+      common: 'Equipe de Vendas',
+      binomial: 'Gestão de Revendedoras',
+      photo: {
+        url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=80',
+        text: 'Time de vendas',
+        by: 'CRM'
+      }
+    },
+    {
+      common: 'Catálogo Digital',
+      binomial: 'E-commerce B2B',
+      photo: {
+        url: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&auto=format&fit=crop&q=80',
+        text: 'Catálogo online',
+        by: 'Web'
+      }
+    },
+    {
+      common: 'Relatórios',
+      binomial: 'BI e Inteligência',
+      photo: {
+        url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80',
+        text: 'Business Intelligence',
+        by: 'Reports'
+      }
+    }
+  ];
+
   return (
     <div className="bg-[#101622] min-h-screen overflow-hidden">
       {/* Hero Section */}
@@ -123,7 +189,7 @@ const Features: React.FC = () => {
                 y: [0, 20, 0]
             }}
             transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute bottom-10 left-10 w-64 h-64 bg-purple-500 rounded-full blur-[128px]"
+            className="absolute bottom-10 left-10 w-64 h-64 bg-fuchsia-500 rounded-full blur-[128px]"
           ></motion.div>
         </div>
 
@@ -144,7 +210,7 @@ const Features: React.FC = () => {
               </div>
               
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-white leading-[1.1]">
-                Domine seu Estoque de <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">Semijoias</span>
+                Domine seu Estoque de <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-fuchsia-400">Semijoias</span>
               </h1>
               
               <p className="text-lg text-gray-300 max-w-lg leading-relaxed">
@@ -152,10 +218,10 @@ const Features: React.FC = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link to="/contact" className="h-12 px-8 rounded-lg bg-primary text-white font-bold text-base hover:bg-primary-hover transition-all shadow-lg shadow-primary/25 flex items-center justify-center gap-2 hover:scale-105 active:scale-95">
+                <a href="#contact" className="h-12 px-8 rounded-lg bg-primary text-white font-bold text-base hover:bg-primary-hover transition-all shadow-lg shadow-primary/25 flex items-center justify-center gap-2 hover:scale-105 active:scale-95">
                   <Rocket size={20} />
                   Falar com Consultor
-                </Link>
+                </a>
               </div>
 
               {/* Social Proof */}
@@ -241,7 +307,7 @@ const Features: React.FC = () => {
                           initial={{ height: 0 }}
                           animate={{ height: "85%" }}
                           transition={{ delay: 1.1, duration: 1 }}
-                          className="w-8 bg-primary rounded-t shadow-[0_0_20px_rgba(19,91,236,0.5)]"
+                          className="w-8 bg-primary rounded-t shadow-[0_0_20px_rgba(139,92,246,0.5)]"
                         ></motion.div>
                          <motion.div 
                           initial={{ height: 0 }}
@@ -290,45 +356,14 @@ const Features: React.FC = () => {
         </div>
       </section>
 
-      {/* Visual Product Break */}
-      <section className="py-20 bg-[#101622] overflow-hidden">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 h-96">
-                <motion.div 
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="relative rounded-2xl overflow-hidden group h-full border border-white/5"
-                >
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all z-10"></div>
-                    <div className="absolute bottom-0 left-0 p-8 z-20">
-                        <h3 className="text-2xl font-bold text-white mb-2">Interface Mobile Flutter</h3>
-                        <p className="text-white/80">Controle tudo pelo celular com nosso app nativo.</p>
-                    </div>
-                    <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuC70y3uz9utwQ54zgn7oGpdB2OPZJ3AfOwbsnAjj1Qnw60K2BMA-LnypHGa3L4-ueJNvZNoZkfG0-MKUOwlIa5AHar6AEgs3vkLySUgdoqXXElzknV1yZHYlEh018YNCnbjetxMiZOUFrq1T9GY7ZIp_X3eXg1aPYlln-T1vVCJaXIfUFtsfmMGkisPrmx4lafdcOp41C8hMwN-nmzeQbV23dpgIfvtTSCgX8cxdLmrnHmiQxmUqy1_Ec8xx291ISWEYEtqbhHznNQ-')"}}></div>
-                </motion.div>
-                <motion.div 
-                    initial={{ opacity: 0, x: 50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    className="grid grid-rows-2 gap-4 h-full"
-                >
-                     <div className="relative rounded-2xl overflow-hidden group h-full border border-white/5">
-                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all z-10"></div>
-                        <div className="absolute bottom-0 left-0 p-6 z-20">
-                            <h3 className="text-xl font-bold text-white">Catálogo Digital</h3>
-                        </div>
-                        <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAD1agzTJ2Ms-KIW3yFMR7v6tsey6Sc6RVmirxT0uLiAqmagNMy6qlR7BcicGUuB9TJTj9Pqf2f7P8rqnN4ZEGlb-344WJcXKC9PKtLV4hI48Zsi9Wo9qYDlPDlklJGGZE_BkoC0A4uV0_t1fDsP8Y4bOJLIiOGW4fzjt5A00x41orXwz6KKVoTDR3PBhCagG8aCl79PvMwb-vDEN_iJwBjeDbWfTV3qDJQp3l_AE13ap1aYJ3a0lfHJN6H6aEUtIw-tSoeVbeFJNUp')"}}></div>
-                     </div>
-                     <div className="relative rounded-2xl overflow-hidden group h-full border border-white/5">
-                        <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all z-10"></div>
-                        <div className="absolute bottom-0 left-0 p-6 z-20">
-                            <h3 className="text-xl font-bold text-white">Relatórios em Tempo Real</h3>
-                        </div>
-                        <div className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJMElFdrzayBtND8ZLcdXk8o1hwRxj33WxSWnRJRt-yXH-tgVkxiiVjhfx7_JkqqTnDfRbrQPuhqpqtL_lQ_Ca9TTJEkHJLx6t-q2k7hTu0UsJz-SkcVlyG1OK2z9AJkMGTlxWHiX0LpGAh6Q5woMmElY0Dekc3INMZqBxhYTQHGYcQtX24LlUQLGmVEp0C7Bx99gzqIiNLKv8xKZGF73t8sn7oY9n4Hk31TzM2kcE2xmOqUdg91zP82mWMR37SLSXIXLEbRGS0Imp')"}}></div>
-                     </div>
-                </motion.div>
-            </div>
+      {/* Visual Product Break - Circular Gallery */}
+      <section className="py-0 bg-[#101622] overflow-hidden">
+        <div className="w-full h-[700px] flex flex-col items-center justify-center relative">
+          <div className="absolute top-10 z-10 text-center px-4">
+             <h2 className="text-3xl md:text-5xl font-black text-white mb-2">Interfaces Poderosas</h2>
+             <p className="text-gray-400">Role para explorar o ecossistema Nexsiles</p>
+          </div>
+          <CircularGallery items={galleryData} radius={500} autoRotateSpeed={0.05} />
         </div>
       </section>
 

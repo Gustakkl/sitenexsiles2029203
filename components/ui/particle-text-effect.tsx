@@ -1,4 +1,3 @@
-
 "use client"
 
 import React, { useEffect, useRef } from "react"
@@ -175,8 +174,7 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, className }: Particl
   }
 
   const nextWord = (word: string, canvas: HTMLCanvasElement) => {
-    // Ensure dimensions are valid to prevent IndexSizeError in getImageData
-    if (canvas.width === 0 || canvas.height === 0) return
+    if (!canvas || canvas.width <= 0 || canvas.height <= 0) return
 
     // Create off-screen canvas for text rendering
     const offscreenCanvas = document.createElement("canvas")
@@ -195,13 +193,13 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, className }: Particl
     const imageData = offscreenCtx.getImageData(0, 0, canvas.width, canvas.height)
     const pixels = imageData.data
 
-    // Generate new color (Blue tones to match theme)
-    // Primary is #135bec (RGB: 19, 91, 236)
+    // Generate new color (Purple tones to match theme)
+    // Primary is #8b5cf6 (RGB: 139, 92, 246)
     const isPrimary = Math.random() > 0.5
     const newColor = isPrimary ? {
-      r: 19,
-      g: 91,
-      b: 236,
+      r: 139,
+      g: 92,
+      b: 246,
     } : {
         r: 255,
         g: 255,
@@ -329,13 +327,10 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, className }: Particl
 
     const resizeCanvas = () => {
         const parent = canvas.parentElement;
-        if(parent) {
+        if(parent && parent.clientWidth > 0 && parent.clientHeight > 0) {
             canvas.width = parent.clientWidth;
             canvas.height = parent.clientHeight;
-            // Only generate next word if canvas has valid dimensions
-            if (canvas.width > 0 && canvas.height > 0) {
-                nextWord(words[wordIndexRef.current], canvas);
-            }
+            nextWord(words[wordIndexRef.current], canvas);
         }
     }
 

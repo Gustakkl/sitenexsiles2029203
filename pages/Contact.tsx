@@ -68,8 +68,11 @@ const Contact: React.FC = () => {
       </div>
 
       {/* Right Column: Form */}
-      <div className="w-full lg:w-1/2 bg-[#161920] border-t lg:border-t-0 lg:border-l border-[#282e39] flex flex-col justify-center p-6 lg:p-16 xl:p-24">
-        <div className="max-w-lg mx-auto w-full">
+      <div className="w-full lg:w-1/2 bg-[#161920] relative flex flex-col justify-center p-6 lg:p-16 xl:p-24">
+        {/* Gradient Border Separator */}
+        <div className="absolute top-0 left-0 w-full h-px lg:w-px lg:h-full bg-gradient-to-r lg:bg-gradient-to-b from-transparent via-primary/50 to-transparent"></div>
+
+        <div className="max-w-lg mx-auto w-full relative z-10">
             <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
                 <div className="flex flex-col gap-2 mb-2">
                     <h3 className="text-2xl font-bold text-white">Envie uma mensagem</h3>
