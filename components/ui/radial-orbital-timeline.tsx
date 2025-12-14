@@ -4,6 +4,7 @@ import { ArrowRight, Link as LinkIcon, Zap } from "lucide-react";
 import { Badge } from "./badge";
 import { Button } from "./button";
 import { Card, CardContent, CardHeader, CardTitle } from "./card";
+import { NexsilesLogo } from "./nexsiles-logo";
 
 interface TimelineItem {
   id: number;
@@ -175,7 +176,7 @@ export default function RadialOrbitalTimeline({
               style={{ animationDelay: "0.5s" }}
             ></div>
             <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center">
-                <img src="https://esm.sh/lucide-static/icons/diamond.svg" className="w-6 h-6 text-primary" alt="Nex" />
+                <NexsilesLogo size={24} />
             </div>
           </div>
 

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { HashRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Diamond, Instagram, Linkedin, Globe, MessageCircle, Home as HomeIcon, Package, Mail, HelpCircle } from 'lucide-react';
+import { Menu, X, Instagram, Linkedin, Globe, MessageCircle, Home as HomeIcon, Package, Mail, HelpCircle } from 'lucide-react';
 import Home from './pages/Home';
 import Features from './pages/Features';
 import Contact from './pages/Contact';
 import WhyNexsiles from './pages/WhyNexsiles';
 import { CircleMenu } from './components/ui/circle-menu';
+import { NexsilesLogo } from './components/ui/nexsiles-logo';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,9 +19,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-[1280px] mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 text-white group">
-            <div className="flex items-center justify-center size-10 rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-              <Diamond size={20} fill="currentColor" />
-            </div>
+            <NexsilesLogo className="group-hover:scale-105 transition-transform duration-300" size={40} />
             <h2 className="text-xl font-bold leading-tight tracking-tight">Nexsiles</h2>
           </Link>
 
@@ -33,11 +32,20 @@ const Navbar: React.FC = () => {
           </nav>
 
           <div className="flex items-center gap-4">
-            <Link to="/contact">
-                <button className="flex items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary hover:bg-primary-hover transition-all text-white text-sm font-bold shadow-[0_0_20px_rgba(19,91,236,0.3)]">
-                Falar com Consultor
-                </button>
-            </Link>
+            {/* Circle Menu integrated into Navbar */}
+            <div className="relative w-10 h-10 hidden md:flex items-center justify-center">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                     <CircleMenu
+                        items={[
+                        { label: 'Início', icon: <HomeIcon size={18} />, href: '/' },
+                        { label: 'Soluções', icon: <Package size={18} />, href: '/features' },
+                        { label: 'Por que Nex?', icon: <HelpCircle size={18} />, href: '/why-us' },
+                        { label: 'Contato', icon: <Mail size={18} />, href: '/contact' },
+                        ]}
+                    />
+                </div>
+            </div>
+            
             <button className="md:hidden text-gray-400" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X /> : <Menu />}
             </button>
@@ -65,7 +73,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
             <div className="flex items-center gap-2 text-white mb-6">
-              <Diamond size={20} className="text-primary" fill="currentColor" />
+              <NexsilesLogo size={32} />
               <span className="text-lg font-bold">Nexsiles</span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
@@ -133,20 +141,6 @@ const App: React.FC = () => {
           </Routes>
         </main>
         
-        {/* Fixed Circle Menu - Bottom Right */}
-        <div className="fixed bottom-8 right-8 z-[100] hidden md:block">
-            <div className="relative flex items-center justify-center">
-                 <CircleMenu
-                    items={[
-                    { label: 'Início', icon: <HomeIcon size={18} />, href: '/' },
-                    { label: 'Soluções', icon: <Package size={18} />, href: '/features' },
-                    { label: 'Por que Nex?', icon: <HelpCircle size={18} />, href: '/why-us' },
-                    { label: 'Contato', icon: <Mail size={18} />, href: '/contact' },
-                    ]}
-                />
-            </div>
-        </div>
-
         <Footer />
       </div>
     </HashRouter>

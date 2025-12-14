@@ -4,6 +4,7 @@ import { Rocket, TrendingUp, CheckCircle, Briefcase, Store, Repeat, QrCode, Tag,
 import PricingSection from '../components/ui/pricing-section';
 import { TestimonialsColumn } from '../components/ui/testimonials-columns';
 import { motion } from 'framer-motion';
+import { Card3DList, CardData } from '../components/ui/animated-3d-card';
 
 const Features: React.FC = () => {
   const testimonials = [
@@ -66,6 +67,37 @@ const Features: React.FC = () => {
   const firstColumn = testimonials.slice(0, 3);
   const secondColumn = testimonials.slice(3, 6);
   const thirdColumn = testimonials.slice(6, 9);
+
+  const featuresData: CardData[] = [
+    {
+      id: "gestao-maletas",
+      title: "Gestão de Maletas",
+      description: "Rastreamento total de peças em consignado com histórico detalhado e conferência rápida.",
+      icon: <Briefcase />,
+      theme: "primary",
+    },
+    {
+      id: "etiquetagem",
+      title: "Etiquetagem Inteligente",
+      description: "Geração automática de códigos de barras e QR Codes para controle unitário de peças.",
+      icon: <QrCode />,
+      theme: "accent",
+    },
+    {
+      id: "financeiro",
+      title: "Financeiro Integrado",
+      description: "Cálculo automático de comissões, contas a pagar e receber, e fluxo de caixa em tempo real.",
+      icon: <Calculator />,
+      theme: "success",
+    },
+    {
+      id: "estoque",
+      title: "Controle de Estoque",
+      description: "Visão completa do inventário, perdas, garantias, reposições e giro de produtos.",
+      icon: <BarChart4 />,
+      theme: "info",
+    },
+  ];
 
   return (
     <div className="bg-[#101622] min-h-screen overflow-hidden">
@@ -247,20 +279,14 @@ const Features: React.FC = () => {
                     Tudo que sua distribuidora precisa
                 </p>
             </div>
-            <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={{
-                visible: { transition: { staggerChildren: 0.1 } }
-              }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-            >
-                <GridFeature icon={<Briefcase />} title="Gestão de Maletas" desc="Rastreamento total de peças em consignado com histórico detalhado." />
-                <GridFeature icon={<QrCode />} title="Etiquetagem Inteligente" desc="Geração automática de códigos de barras e QR Codes." />
-                <GridFeature icon={<Calculator />} title="Financeiro Integrado" desc="Cálculo automático de comissões e fluxo de caixa em tempo real." />
-                <GridFeature icon={<BarChart4 />} title="Controle de Estoque" desc="Visão completa do inventário, perdas, garantias e reposições." />
-            </motion.div>
+            
+            <Card3DList 
+              cards={featuresData} 
+              columns={4}
+              gap="md"
+              size="sm"
+              variant="premium"
+            />
         </div>
       </section>
 
@@ -374,22 +400,6 @@ const Features: React.FC = () => {
     </div>
   );
 };
-
-const GridFeature = ({ icon, title, desc }: {icon: React.ReactNode, title: string, desc: string}) => (
-    <motion.div 
-        variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-        }}
-        className="group relative rounded-xl border border-[#282e39] bg-[#1c1f27] p-6 hover:shadow-xl transition-all hover:border-primary/50 hover:-translate-y-1"
-    >
-        <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-            {React.cloneElement(icon as React.ReactElement<any>, { size: 24 })}
-        </div>
-        <h3 className="mt-4 text-lg font-bold text-white">{title}</h3>
-        <p className="mt-2 text-sm text-gray-400">{desc}</p>
-    </motion.div>
-);
 
 const StepCard = ({ number, icon, title, desc }: {number: number, icon: React.ReactNode, title: string, desc: string}) => (
     <motion.div 

@@ -1,3 +1,4 @@
+
 "use client"
 
 import React, { useEffect, useRef } from "react"
@@ -174,6 +175,9 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, className }: Particl
   }
 
   const nextWord = (word: string, canvas: HTMLCanvasElement) => {
+    // Ensure dimensions are valid to prevent IndexSizeError in getImageData
+    if (canvas.width === 0 || canvas.height === 0) return
+
     // Create off-screen canvas for text rendering
     const offscreenCanvas = document.createElement("canvas")
     offscreenCanvas.width = canvas.width
@@ -328,7 +332,10 @@ export function ParticleTextEffect({ words = DEFAULT_WORDS, className }: Particl
         if(parent) {
             canvas.width = parent.clientWidth;
             canvas.height = parent.clientHeight;
-            nextWord(words[wordIndexRef.current], canvas);
+            // Only generate next word if canvas has valid dimensions
+            if (canvas.width > 0 && canvas.height > 0) {
+                nextWord(words[wordIndexRef.current], canvas);
+            }
         }
     }
 

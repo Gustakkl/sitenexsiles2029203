@@ -84,12 +84,14 @@ const WhyNexsiles: React.FC = () => {
   ];
 
   return (
-    <div className="w-full h-[calc(100vh-80px)] overflow-hidden bg-[#101622] relative flex flex-col">
-        <div className="absolute top-8 left-0 w-full z-10 text-center pointer-events-none px-4">
+    <div className="w-full min-h-[1100px] bg-[#101622] relative flex flex-col">
+        <div className="pt-20 pb-8 w-full z-10 text-center px-4 relative">
             <h1 className="text-3xl md:text-5xl font-black text-white mb-2 drop-shadow-lg">Por que Nexsiles?</h1>
             <p className="text-gray-400 text-lg max-w-xl mx-auto drop-shadow-md">Explore nosso ecossistema interativo. Clique nos nós para descobrir.</p>
         </div>
-        <RadialOrbitalTimeline timelineData={reasonData} />
+        <div className="flex-1 w-full relative min-h-[800px]">
+             <RadialOrbitalTimeline timelineData={reasonData} />
+        </div>
     </div>
   );
 };
